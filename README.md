@@ -1,2 +1,2 @@
 # liferay-suggestion-box
-Liferay Suggestion Box
+Suggestion Box Liferay app

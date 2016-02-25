@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+<service-builder package-path="com.rivetlogic.suggestionbox">
+	<author>Manrique Varela</author>
+	<namespace>rivetlogic_suggestion_box</namespace>
+
+	<entity name="Suggestion" local-service="true" remote-service="false">
+
+		<!-- PK fields -->
+
+		<column name="suggestionId" type="long" primary="true" />
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Other fields -->
+
+		<column name="category" type="String" />
+		<column name="title" type="String" />
+		<column name="description" type="String" />
+
+		<column name="status" type="String" />
+
+		<column name="receivedDate" type="Date" />
+		<column name="receivedComment" type="String" />
+		<column name="receivedUserId" type="long" />
+
+
+		<!-- Order -->
+
+		<order by="desc">
+			<order-column name="createDate" />
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="GroupId" return-type="Collection">
+			<finder-column name="groupId" />
+		</finder>
+
+		<finder name="CompanyGroup" return-type="Collection">
+			<finder-column name="companyId"></finder-column>
+			<finder-column name="groupId"></finder-column>
+		</finder>
+
+		<finder name="CompanyGroupUser" return-type="Collection">
+			<finder-column name="companyId"></finder-column>
+			<finder-column name="groupId"></finder-column>
+			<finder-column name="userId"></finder-column>
+		</finder>
+
+	</entity>
+
+</service-builder>
