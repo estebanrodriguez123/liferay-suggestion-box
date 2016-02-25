@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.rivetlogic.suggestionbox.model.Suggestion">
+		<field name="suggestionId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="category" type="String" />
+		<field name="title" type="String">
+			<hint name="display-width">600</hint>
+		</field>
+		<field name="description" type="String">
+			<hint name="max-length">5000</hint>
+			<hint name="display-height">200</hint>
+			<hint name="display-width">600</hint>
+		</field>
+		<field name="status" type="String" />
+		<field name="receivedDate" type="Date" />
+		<field name="receivedComment" type="String">
+			<hint name="max-length">5000</hint>
+		</field>
+		<field name="receivedUserId" type="long" />
+	</model>
+</model-hints>
