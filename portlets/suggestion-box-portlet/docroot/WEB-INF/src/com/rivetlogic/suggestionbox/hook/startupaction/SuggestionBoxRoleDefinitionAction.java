@@ -76,9 +76,11 @@ public class SuggestionBoxRoleDefinitionAction extends SimpleAction {
 				
 				_log.info("New Role created: SUGGESTIONBOX_MANAGER");
 				
+			} catch (SystemException e) {
 
-			} catch (SystemException | PortalException e) {
-
+				_log.info("Error creating Role: SUGGESTIONBOX_MANAGER", e);
+			} catch ( PortalException e) {
+				
 				_log.info("Error creating Role: SUGGESTIONBOX_MANAGER", e);
 			}
 

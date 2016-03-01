@@ -81,10 +81,11 @@ public class SuggestionBox extends MVCPortlet {
 
 		ThemeDisplay themeDisplay = (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
 
-		if (themeDisplay.getPermissionChecker().hasPermission(themeDisplay.getScopeGroupId(), "com.rivetlogic.suggestionbox.model.Suggestion",
-				themeDisplay.getScopeGroupId(), "OWNER_UPDATE")) {
+		long suggestionId = ParamUtil.getLong(request, "suggestionId");
 
-			Suggestion suggestion = SuggestionLocalServiceUtil.getSuggestion(ParamUtil.getLong(request, "suggestionId"));
+		if (SuggestionPermission.contains(themeDisplay.getPermissionChecker(), suggestionId, "OWNER_UPDATE")) {
+
+			Suggestion suggestion = SuggestionLocalServiceUtil.getSuggestion(suggestionId);
 
 			suggestion.setTitle(ParamUtil.getString(request, "title"));
 			suggestion.setDescription(ParamUtil.getString(request, "description"));
