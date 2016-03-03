@@ -1,0 +1,9 @@
+
+.aui {
+    .suggestion-title {
+        font-weight: 300;
+    }
+    .suggestion-meta-info {
+        font-style: italic;
+    }
+}

@@ -20,40 +20,42 @@
 		showBackURL="<%=true%>" title="suggestion-view" />
 		
 <c:if test='<%=permission%>'> 
-
-
-	<b><liferay-ui:message key="suggestion-category" />:</b>
-	<%=suggestion.getCategory()%><br />
-	
-	<b><liferay-ui:message key="suggestion-title" />:</b>
-	<%=suggestion.getTitle()%><br />
-	
-	<b><liferay-ui:message key="suggestion-created-date" />:</b>
-	<%= df.format(suggestion.getCreateDate()) %><br />
-	
-	<b><liferay-ui:message key="suggestion-created-user" />:</b>
-	<%=PortalUtil.getUserName(suggestion.getUserId(), "")%><br />
-	
-	<b><liferay-ui:message key="suggestion-status" />:</b>
-	<%=suggestion.getStatus()%><br />
+	<h2 class="suggestion-title"><%=suggestion.getTitle()%></h2>
 	
 	<b><liferay-ui:message key="suggestion-description" />:</b>
 	<p> <%=StringUtil.replace(suggestion.getDescription(), "\n", "<br>")%></p>
-	
-	<hr />
-	
 
-	<b><liferay-ui:message key="suggestion-received-date" />:</b>
-	<%=  df.format(suggestion.getReceivedDate()) %><br />
+	<hr/>
 	
-	<b><liferay-ui:message key="suggestion-received-user" />:</b>
-	<%=PortalUtil.getUserName(suggestion.getReceivedUserId(), "")%><br />
+	<div class="suggestion-meta-info">
+		<b><liferay-ui:message key="suggestion-category" />:</b>
+		<%=suggestion.getCategory()%><br />
+		
+		<b><liferay-ui:message key="suggestion-created-date" />:</b>
+		<%= df.format(suggestion.getCreateDate()) %><br />
+		
+		<b><liferay-ui:message key="suggestion-created-user" />:</b>
+		<%=PortalUtil.getUserName(suggestion.getUserId(), "")%><br />
+		
+		<b><liferay-ui:message key="suggestion-status" />:</b>
+		<%=suggestion.getStatus()%><br />
 	
-	<b><liferay-ui:message key="suggestion-received-comment" />:</b>
-	<p> <%=StringUtil.replace(suggestion.getReceivedComment(), "\n", "<br>")%></p><br />
 	
-	<br />
+	
+		<hr />
+		
 
+		<b><liferay-ui:message key="suggestion-received-date" />:</b>
+		<%=  df.format(suggestion.getReceivedDate()) %><br />
+		
+		<b><liferay-ui:message key="suggestion-received-user" />:</b>
+		<%=PortalUtil.getUserName(suggestion.getReceivedUserId(), "")%><br />
+		
+		<b><liferay-ui:message key="suggestion-received-comment" />:</b>
+		<p> <%=StringUtil.replace(suggestion.getReceivedComment(), "\n", "<br>")%></p><br />
+		
+		<br />
+	</div>
 
 </c:if>
 
