@@ -58,9 +58,7 @@
 			<%=suggestion.getStatus()%><br />
 		</c:if>
 		
-		
-		
-		<hr />
+		<hr />	
 		
 		<c:if test="<%= isReceived %>">
 			
@@ -71,9 +69,10 @@
 			<%=PortalUtil.getUserName(suggestion.getReceivedUserId(), "")%>
 			
 			<p></p>
+			
+			<hr/>
 		</c:if>
 	</div>
-	<hr/>
 	<aui:model-context bean="<%=suggestion%>" model="<%=Suggestion.class%>" />
 
 	<aui:form action="<%=receviedSuggestionURL%>" method="POST"

@@ -26,7 +26,7 @@ public class SuggestionBox extends MVCPortlet {
 
 	public void addSuggestion(ActionRequest request, ActionResponse response) throws SystemException, Exception {
 
-		ServiceContext serviceContext = ServiceContextFactory.getInstance(Suggestion.class.getName(), request);
+		ServiceContext serviceContext = ServiceContextFactory.getInstance(request);
 
 		ThemeDisplay themeDisplay = (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
 
@@ -57,7 +57,7 @@ public class SuggestionBox extends MVCPortlet {
 
 	public void deleteSuggestion(ActionRequest request, ActionResponse response) throws SystemException, PortalException, Exception {
 
-		ServiceContext serviceContext = ServiceContextFactory.getInstance(Suggestion.class.getName(), request);
+		ServiceContext serviceContext = ServiceContextFactory.getInstance(request);
 
 		ThemeDisplay themeDisplay = (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
 
@@ -77,7 +77,7 @@ public class SuggestionBox extends MVCPortlet {
 
 	public void updateSuggestion(ActionRequest request, ActionResponse response) throws SystemException, PortalException, Exception {
 
-		ServiceContext serviceContext = ServiceContextFactory.getInstance(Suggestion.class.getName(), request);
+		ServiceContext serviceContext = ServiceContextFactory.getInstance(request);
 
 		ThemeDisplay themeDisplay = (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
 
@@ -102,7 +102,7 @@ public class SuggestionBox extends MVCPortlet {
 
 	public void receviedSuggestion(ActionRequest request, ActionResponse response) throws SystemException, PortalException, Exception {
 
-		ServiceContext serviceContext = ServiceContextFactory.getInstance(Suggestion.class.getName(), request);
+		ServiceContext serviceContext = ServiceContextFactory.getInstance(request);
 
 		ThemeDisplay themeDisplay = (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
 
@@ -124,7 +124,7 @@ public class SuggestionBox extends MVCPortlet {
 
 	public void updateReceviedSuggestion(ActionRequest request, ActionResponse response) throws SystemException, PortalException, Exception {
 
-		ServiceContext serviceContext = ServiceContextFactory.getInstance(Suggestion.class.getName(), request);
+		ServiceContext serviceContext = ServiceContextFactory.getInstance(request);
 
 		ThemeDisplay themeDisplay = (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
 
@@ -144,6 +144,4 @@ public class SuggestionBox extends MVCPortlet {
 		}
 
 	}
-
-	private static final Log _log = LogFactoryUtil.getLog(SuggestionBox.class);
 }
