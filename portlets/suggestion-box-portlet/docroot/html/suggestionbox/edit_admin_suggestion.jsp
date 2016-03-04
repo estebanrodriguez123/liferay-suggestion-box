@@ -35,42 +35,45 @@
 		<portlet:param name="redirect" value="<%=redirect%>" />
 	</portlet:actionURL>
 
-
-
-	<b><liferay-ui:message key="suggestion-category" />:</b>
-	<%=suggestion.getCategory()%><br />
-	
-	<b><liferay-ui:message key="suggestion-title" />:</b>
-	<%=suggestion.getTitle()%><br />
-	
-	<b><liferay-ui:message key="suggestion-created-date" />:</b>
-	<%=df.format(suggestion.getCreateDate()) %><br />
-	
-	<b><liferay-ui:message key="suggestion-created-user" />:</b>
-	<%=PortalUtil.getUserName(suggestion.getUserId(), "")%><br />
-	
-	<c:if test="<%= isReceived %>">
-		<b><liferay-ui:message key="suggestion-status" />:</b>
-		<%=suggestion.getStatus()%><br />
-	</c:if>
+	<h2 class="suggestion-title"><%=suggestion.getTitle()%></h2>
 	
 	<b><liferay-ui:message key="suggestion-description" />:</b>
 	<p> <%=StringUtil.replace(suggestion.getDescription(), "\n", "<br>")%></p>
-	
 	<hr />
-	
-	<c:if test="<%= isReceived %>">
+	<div class="suggestion-meta-info">
+		<b><liferay-ui:message key="suggestion-category" />:</b>
+		<%=suggestion.getCategory()%><br />
 		
-		<b><liferay-ui:message key="suggestion-received-date" />:</b>
-		<%=df.format(suggestion.getReceivedDate()) %><br />
+		<%-- <b><liferay-ui:message key="suggestion-title" />:</b>
+		<%=suggestion.getTitle()%><br /> --%>
 		
-		<b><liferay-ui:message key="suggestion-received-user" />:</b>
-		<%=PortalUtil.getUserName(suggestion.getReceivedUserId(), "")%>
+		<b><liferay-ui:message key="suggestion-created-date" />:</b>
+		<%=df.format(suggestion.getCreateDate()) %><br />
 		
-		<p></p>
-	</c:if>
-
-
+		<b><liferay-ui:message key="suggestion-created-user" />:</b>
+		<%=PortalUtil.getUserName(suggestion.getUserId(), "")%><br />
+		
+		<c:if test="<%= isReceived %>">
+			<b><liferay-ui:message key="suggestion-status" />:</b>
+			<%=suggestion.getStatus()%><br />
+		</c:if>
+		
+		
+		
+		<hr />
+		
+		<c:if test="<%= isReceived %>">
+			
+			<b><liferay-ui:message key="suggestion-received-date" />:</b>
+			<%=df.format(suggestion.getReceivedDate()) %><br />
+			
+			<b><liferay-ui:message key="suggestion-received-user" />:</b>
+			<%=PortalUtil.getUserName(suggestion.getReceivedUserId(), "")%>
+			
+			<p></p>
+		</c:if>
+	</div>
+	<hr/>
 	<aui:model-context bean="<%=suggestion%>" model="<%=Suggestion.class%>" />
 
 	<aui:form action="<%=receviedSuggestionURL%>" method="POST"
