@@ -16,13 +16,44 @@ import com.rivetlogic.suggestionbox.model.Suggestion;
 import com.rivetlogic.suggestionbox.service.SuggestionLocalServiceUtil;
 import com.rivetlogic.suggestionbox.service.permission.SuggestionPermission;
 
+import java.io.IOException;
+
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
+import javax.portlet.PortletException;
+import javax.portlet.RenderRequest;
+import javax.portlet.RenderResponse;
 
 /**
  * Portlet implementation class SuggestionBox
  */
 public class SuggestionBox extends MVCPortlet {
+
+	@Override
+	protected void doDispatch(RenderRequest renderRequest, RenderResponse renderResponse) throws IOException, PortletException {
+
+		long suggestionId = ParamUtil.getLong(renderRequest, "suggestionId");
+
+		if (suggestionId > 0) {
+
+			Suggestion suggestion = null;
+			try {
+				suggestion = SuggestionLocalServiceUtil.getSuggestion(suggestionId);
+			} catch (PortalException | SystemException e) {
+				_log.info("No Suggestion exists with the primary key " + suggestionId);
+			}
+
+			if (suggestion == null) {
+				_log.info("Rendering View Template ");
+				include(viewTemplate, renderRequest, renderResponse);
+
+				return;
+			}
+		}
+
+		super.doDispatch(renderRequest, renderResponse);
+
+	}
 
 	public void addSuggestion(ActionRequest request, ActionResponse response) throws SystemException, Exception {
 
@@ -144,4 +175,6 @@ public class SuggestionBox extends MVCPortlet {
 		}
 
 	}
+
+	private static final Log _log = LogFactoryUtil.getLog(SuggestionBox.class);
 }
