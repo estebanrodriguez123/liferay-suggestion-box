@@ -162,17 +162,11 @@ public class SuggestionLocalServiceClp implements SuggestionLocalService {
 				"java.lang.String"
 			};
 
-		_methodName26 = "getSuggestionsByUser";
+		_methodName26 = "getSuggestionsByCompanyIdAndGroupId";
 
 		_methodParameterTypes26 = new String[] {
 				"long", "long", "int", "int", "java.lang.String",
 				"java.lang.String"
-			};
-
-		_methodName27 = "getSuggestionsByCompanyId";
-
-		_methodParameterTypes27 = new String[] {
-				"long", "int", "int", "java.lang.String", "java.lang.String"
 			};
 	}
 
@@ -997,8 +991,8 @@ public class SuggestionLocalServiceClp implements SuggestionLocalService {
 	}
 
 	@Override
-	public java.util.List<com.rivetlogic.suggestionbox.model.Suggestion> getSuggestionsByUser(
-		long companyId, long userId, int start, int end,
+	public java.util.List<com.rivetlogic.suggestionbox.model.Suggestion> getSuggestionsByCompanyIdAndGroupId(
+		long companyId, long groupId, int start, int end,
 		java.lang.String orderByType, java.lang.String orderByColumn) {
 		Object returnObj = null;
 
@@ -1008,43 +1002,7 @@ public class SuggestionLocalServiceClp implements SuggestionLocalService {
 					new Object[] {
 						companyId,
 						
-					userId,
-						
-					start,
-						
-					end,
-						
-					ClpSerializer.translateInput(orderByType),
-						
-					ClpSerializer.translateInput(orderByColumn)
-					});
-		}
-		catch (Throwable t) {
-			t = ClpSerializer.translateThrowable(t);
-
-			if (t instanceof RuntimeException) {
-				throw (RuntimeException)t;
-			}
-			else {
-				throw new RuntimeException(t.getClass().getName() +
-					" is not a valid exception");
-			}
-		}
-
-		return (java.util.List<com.rivetlogic.suggestionbox.model.Suggestion>)ClpSerializer.translateOutput(returnObj);
-	}
-
-	@Override
-	public java.util.List<com.rivetlogic.suggestionbox.model.Suggestion> getSuggestionsByCompanyId(
-		long companyId, int start, int end, java.lang.String orderByType,
-		java.lang.String orderByColumn) {
-		Object returnObj = null;
-
-		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName27,
-					_methodParameterTypes27,
-					new Object[] {
-						companyId,
+					groupId,
 						
 					start,
 						
@@ -1123,6 +1081,4 @@ public class SuggestionLocalServiceClp implements SuggestionLocalService {
 	private String[] _methodParameterTypes25;
 	private String _methodName26;
 	private String[] _methodParameterTypes26;
-	private String _methodName27;
-	private String[] _methodParameterTypes27;
 }

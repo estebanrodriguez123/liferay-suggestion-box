@@ -233,14 +233,14 @@ public class SuggestionLocalServiceImpl extends SuggestionLocalServiceBaseImpl {
 		return myList;
 	}
 	
-	public List<Suggestion> getSuggestionsByUser(long companyId, long userId, int start, int end, String orderByType, String orderByColumn) {
+	public List<Suggestion> getSuggestionsByCompanyIdAndGroupId(long companyId, long groupId, int start, int end, String orderByType, String orderByColumn) {
 
 		List<Suggestion> myList = new ArrayList<Suggestion>();
 
 		DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(Suggestion.class);
 
 		dynamicQuery.add(PropertyFactoryUtil.forName("companyId").eq(companyId));
-		dynamicQuery.add(PropertyFactoryUtil.forName("userId").eq(userId));
+		dynamicQuery.add(PropertyFactoryUtil.forName("groupId").eq(groupId));
 
 		dynamicQuery.setLimit(start, end);
 
@@ -257,30 +257,7 @@ public class SuggestionLocalServiceImpl extends SuggestionLocalServiceBaseImpl {
 		}
 		return myList;
 	}
-
-	public List<Suggestion> getSuggestionsByCompanyId(long companyId, int start, int end, String orderByType, String orderByColumn) {
-
-		List<Suggestion> myList = new ArrayList<Suggestion>();
-
-		DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(Suggestion.class);
-
-		dynamicQuery.add(PropertyFactoryUtil.forName("companyId").eq(companyId));
-
-		dynamicQuery.setLimit(start, end);
-
-		if (orderByType.equalsIgnoreCase("asc")) {
-			dynamicQuery.addOrder(OrderFactoryUtil.asc(orderByColumn));
-		} else {
-			dynamicQuery.addOrder(OrderFactoryUtil.desc(orderByColumn));
-		}
-
-		try {
-			myList = suggestionPersistence.findWithDynamicQuery(dynamicQuery);
-		} catch (SystemException e) {
-			_log.error(e.getMessage());
-		}
-		return myList;
-	}
+	
 
 	private static final Log _log = LogFactoryUtil.getLog(SuggestionLocalServiceImpl.class);
 

@@ -123,8 +123,9 @@
 			<liferay-ui:search-container iteratorURL="<%=portletURL%>" emptyResultsMessage="no-suggestions" orderByCol="<%=orderByCol%>" orderByType="<%=orderByType%>" >
 				<liferay-ui:search-container-results
 					results="<%=SuggestionLocalServiceUtil
-							.getSuggestionsByCompanyId(
+							.getSuggestionsByCompanyIdAndGroupId(
 									themeDisplay.getCompanyId(),
+									themeDisplay.getScopeGroupId(),
 									searchContainer.getStart(),
 									searchContainer.getEnd(),
 									orderByType,

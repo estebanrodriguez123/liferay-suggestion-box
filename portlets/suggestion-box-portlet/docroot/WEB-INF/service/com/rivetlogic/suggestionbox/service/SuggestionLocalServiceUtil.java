@@ -330,20 +330,12 @@ public class SuggestionLocalServiceUtil {
 			groupId, start, end, orderByType, orderByColumn);
 	}
 
-	public static java.util.List<com.rivetlogic.suggestionbox.model.Suggestion> getSuggestionsByUser(
-		long companyId, long userId, int start, int end,
+	public static java.util.List<com.rivetlogic.suggestionbox.model.Suggestion> getSuggestionsByCompanyIdAndGroupId(
+		long companyId, long groupId, int start, int end,
 		java.lang.String orderByType, java.lang.String orderByColumn) {
 		return getService()
-				   .getSuggestionsByUser(companyId, userId, start, end,
-			orderByType, orderByColumn);
-	}
-
-	public static java.util.List<com.rivetlogic.suggestionbox.model.Suggestion> getSuggestionsByCompanyId(
-		long companyId, int start, int end, java.lang.String orderByType,
-		java.lang.String orderByColumn) {
-		return getService()
-				   .getSuggestionsByCompanyId(companyId, start, end,
-			orderByType, orderByColumn);
+				   .getSuggestionsByCompanyIdAndGroupId(companyId, groupId,
+			start, end, orderByType, orderByColumn);
 	}
 
 	public static void clearService() {

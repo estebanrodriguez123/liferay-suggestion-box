@@ -295,12 +295,7 @@ public interface SuggestionLocalService extends BaseLocalService,
 		java.lang.String orderByType, java.lang.String orderByColumn);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public java.util.List<com.rivetlogic.suggestionbox.model.Suggestion> getSuggestionsByUser(
-		long companyId, long userId, int start, int end,
+	public java.util.List<com.rivetlogic.suggestionbox.model.Suggestion> getSuggestionsByCompanyIdAndGroupId(
+		long companyId, long groupId, int start, int end,
 		java.lang.String orderByType, java.lang.String orderByColumn);
-
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public java.util.List<com.rivetlogic.suggestionbox.model.Suggestion> getSuggestionsByCompanyId(
-		long companyId, int start, int end, java.lang.String orderByType,
-		java.lang.String orderByColumn);
 }

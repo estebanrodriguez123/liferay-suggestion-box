@@ -161,17 +161,11 @@ public class SuggestionLocalServiceClpInvoker {
 				"java.lang.String"
 			};
 
-		_methodName45 = "getSuggestionsByUser";
+		_methodName45 = "getSuggestionsByCompanyIdAndGroupId";
 
 		_methodParameterTypes45 = new String[] {
 				"long", "long", "int", "int", "java.lang.String",
 				"java.lang.String"
-			};
-
-		_methodName46 = "getSuggestionsByCompanyId";
-
-		_methodParameterTypes46 = new String[] {
-				"long", "int", "int", "java.lang.String", "java.lang.String"
 			};
 	}
 
@@ -327,19 +321,11 @@ public class SuggestionLocalServiceClpInvoker {
 
 		if (_methodName45.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes45, parameterTypes)) {
-			return SuggestionLocalServiceUtil.getSuggestionsByUser(((Long)arguments[0]).longValue(),
+			return SuggestionLocalServiceUtil.getSuggestionsByCompanyIdAndGroupId(((Long)arguments[0]).longValue(),
 				((Long)arguments[1]).longValue(),
 				((Integer)arguments[2]).intValue(),
 				((Integer)arguments[3]).intValue(),
 				(java.lang.String)arguments[4], (java.lang.String)arguments[5]);
-		}
-
-		if (_methodName46.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes46, parameterTypes)) {
-			return SuggestionLocalServiceUtil.getSuggestionsByCompanyId(((Long)arguments[0]).longValue(),
-				((Integer)arguments[1]).intValue(),
-				((Integer)arguments[2]).intValue(),
-				(java.lang.String)arguments[3], (java.lang.String)arguments[4]);
 		}
 
 		throw new UnsupportedOperationException();
@@ -397,6 +383,4 @@ public class SuggestionLocalServiceClpInvoker {
 	private String[] _methodParameterTypes44;
 	private String _methodName45;
 	private String[] _methodParameterTypes45;
-	private String _methodName46;
-	private String[] _methodParameterTypes46;
 }
