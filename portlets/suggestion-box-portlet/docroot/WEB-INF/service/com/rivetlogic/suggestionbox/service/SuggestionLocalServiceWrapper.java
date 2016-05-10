@@ -346,6 +346,14 @@ public class SuggestionLocalServiceWrapper implements SuggestionLocalService,
 	}
 
 	@Override
+	public java.util.List<com.rivetlogic.suggestionbox.model.Suggestion> getSuggestionsByUserIdAndGroupId(
+		long companyId, long userId, long groupId, int start, int end,
+		java.lang.String orderByType, java.lang.String orderByColumn) {
+		return _suggestionLocalService.getSuggestionsByUserIdAndGroupId(companyId,
+			userId, groupId, start, end, orderByType, orderByColumn);
+	}
+
+	@Override
 	public java.util.List<com.rivetlogic.suggestionbox.model.Suggestion> getSuggestionsByUser(
 		long companyId, long userId, int start, int end,
 		java.lang.String orderByType, java.lang.String orderByColumn) {

@@ -322,6 +322,14 @@ public class SuggestionLocalServiceUtil {
 				   .getSuggestionsByUser(companyId, groupId, userId, start, end);
 	}
 
+	public static java.util.List<com.rivetlogic.suggestionbox.model.Suggestion> getSuggestionsByUserIdAndGroupId(
+		long companyId, long userId, long groupId, int start, int end,
+		java.lang.String orderByType, java.lang.String orderByColumn) {
+		return getService()
+				   .getSuggestionsByUserIdAndGroupId(companyId, userId,
+			groupId, start, end, orderByType, orderByColumn);
+	}
+
 	public static java.util.List<com.rivetlogic.suggestionbox.model.Suggestion> getSuggestionsByUser(
 		long companyId, long userId, int start, int end,
 		java.lang.String orderByType, java.lang.String orderByColumn) {

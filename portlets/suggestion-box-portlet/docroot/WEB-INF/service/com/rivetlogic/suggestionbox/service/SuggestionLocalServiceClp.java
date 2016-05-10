@@ -155,16 +155,23 @@ public class SuggestionLocalServiceClp implements SuggestionLocalService {
 				"long", "long", "long", "int", "int"
 			};
 
-		_methodName25 = "getSuggestionsByUser";
+		_methodName25 = "getSuggestionsByUserIdAndGroupId";
 
 		_methodParameterTypes25 = new String[] {
+				"long", "long", "long", "int", "int", "java.lang.String",
+				"java.lang.String"
+			};
+
+		_methodName26 = "getSuggestionsByUser";
+
+		_methodParameterTypes26 = new String[] {
 				"long", "long", "int", "int", "java.lang.String",
 				"java.lang.String"
 			};
 
-		_methodName26 = "getSuggestionsByCompanyId";
+		_methodName27 = "getSuggestionsByCompanyId";
 
-		_methodParameterTypes26 = new String[] {
+		_methodParameterTypes27 = new String[] {
 				"long", "int", "int", "java.lang.String", "java.lang.String"
 			};
 	}
@@ -950,14 +957,54 @@ public class SuggestionLocalServiceClp implements SuggestionLocalService {
 	}
 
 	@Override
-	public java.util.List<com.rivetlogic.suggestionbox.model.Suggestion> getSuggestionsByUser(
-		long companyId, long userId, int start, int end,
+	public java.util.List<com.rivetlogic.suggestionbox.model.Suggestion> getSuggestionsByUserIdAndGroupId(
+		long companyId, long userId, long groupId, int start, int end,
 		java.lang.String orderByType, java.lang.String orderByColumn) {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName25,
 					_methodParameterTypes25,
+					new Object[] {
+						companyId,
+						
+					userId,
+						
+					groupId,
+						
+					start,
+						
+					end,
+						
+					ClpSerializer.translateInput(orderByType),
+						
+					ClpSerializer.translateInput(orderByColumn)
+					});
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<com.rivetlogic.suggestionbox.model.Suggestion>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public java.util.List<com.rivetlogic.suggestionbox.model.Suggestion> getSuggestionsByUser(
+		long companyId, long userId, int start, int end,
+		java.lang.String orderByType, java.lang.String orderByColumn) {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName26,
+					_methodParameterTypes26,
 					new Object[] {
 						companyId,
 						
@@ -994,8 +1041,8 @@ public class SuggestionLocalServiceClp implements SuggestionLocalService {
 		Object returnObj = null;
 
 		try {
-			returnObj = _invokableLocalService.invokeMethod(_methodName26,
-					_methodParameterTypes26,
+			returnObj = _invokableLocalService.invokeMethod(_methodName27,
+					_methodParameterTypes27,
 					new Object[] {
 						companyId,
 						
@@ -1076,4 +1123,6 @@ public class SuggestionLocalServiceClp implements SuggestionLocalService {
 	private String[] _methodParameterTypes25;
 	private String _methodName26;
 	private String[] _methodParameterTypes26;
+	private String _methodName27;
+	private String[] _methodParameterTypes27;
 }
