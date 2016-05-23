@@ -112,8 +112,8 @@ public class SuggestionLocalServiceImpl extends SuggestionLocalServiceBaseImpl {
 				List<User> users = UserLocalServiceUtil.getRoleUsers(role.getRoleId());
 
 				for (User adminUser : users) {
-
-					UserNotificationEventLocalServiceUtil.addUserNotificationEvent(adminUser.getUserId(), SuggestionNotificationHandler.PORTLET_ID,
+					if(adminUser.getSiteGroups().contains(serviceContext.getScopeGroup()))
+						UserNotificationEventLocalServiceUtil.addUserNotificationEvent(adminUser.getUserId(), SuggestionNotificationHandler.PORTLET_ID,
 							new Date().getTime(), suggestion.getUserId(), notificationEventJSONObject.toString(), false, serviceContext);
 				}
 
