@@ -207,14 +207,15 @@ public class SuggestionLocalServiceImpl extends SuggestionLocalServiceBaseImpl {
 		return suggestionPersistence.findByCompanyGroupUser(companyId, groupId, userId, start, end);
 	}
 
-	public List<Suggestion> getSuggestionsByUser(long companyId, long userId, int start, int end, String orderByType, String orderByColumn) {
-
+	public List<Suggestion> getSuggestionsByUserIdAndGroupId(long companyId, long userId, long groupId, int start, int end, String orderByType, String orderByColumn) {
+		
 		List<Suggestion> myList = new ArrayList<Suggestion>();
 
 		DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(Suggestion.class);
 
 		dynamicQuery.add(PropertyFactoryUtil.forName("companyId").eq(companyId));
 		dynamicQuery.add(PropertyFactoryUtil.forName("userId").eq(userId));
+		dynamicQuery.add(PropertyFactoryUtil.forName("groupId").eq(groupId));
 
 		dynamicQuery.setLimit(start, end);
 
@@ -231,14 +232,15 @@ public class SuggestionLocalServiceImpl extends SuggestionLocalServiceBaseImpl {
 		}
 		return myList;
 	}
-
-	public List<Suggestion> getSuggestionsByCompanyId(long companyId, int start, int end, String orderByType, String orderByColumn) {
+	
+	public List<Suggestion> getSuggestionsByCompanyIdAndGroupId(long companyId, long groupId, int start, int end, String orderByType, String orderByColumn) {
 
 		List<Suggestion> myList = new ArrayList<Suggestion>();
 
 		DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(Suggestion.class);
 
 		dynamicQuery.add(PropertyFactoryUtil.forName("companyId").eq(companyId));
+		dynamicQuery.add(PropertyFactoryUtil.forName("groupId").eq(groupId));
 
 		dynamicQuery.setLimit(start, end);
 
@@ -255,6 +257,7 @@ public class SuggestionLocalServiceImpl extends SuggestionLocalServiceBaseImpl {
 		}
 		return myList;
 	}
+	
 
 	private static final Log _log = LogFactoryUtil.getLog(SuggestionLocalServiceImpl.class);
 

@@ -155,17 +155,18 @@ public class SuggestionLocalServiceClp implements SuggestionLocalService {
 				"long", "long", "long", "int", "int"
 			};
 
-		_methodName25 = "getSuggestionsByUser";
+		_methodName25 = "getSuggestionsByUserIdAndGroupId";
 
 		_methodParameterTypes25 = new String[] {
-				"long", "long", "int", "int", "java.lang.String",
+				"long", "long", "long", "int", "int", "java.lang.String",
 				"java.lang.String"
 			};
 
-		_methodName26 = "getSuggestionsByCompanyId";
+		_methodName26 = "getSuggestionsByCompanyIdAndGroupId";
 
 		_methodParameterTypes26 = new String[] {
-				"long", "int", "int", "java.lang.String", "java.lang.String"
+				"long", "long", "int", "int", "java.lang.String",
+				"java.lang.String"
 			};
 	}
 
@@ -950,8 +951,8 @@ public class SuggestionLocalServiceClp implements SuggestionLocalService {
 	}
 
 	@Override
-	public java.util.List<com.rivetlogic.suggestionbox.model.Suggestion> getSuggestionsByUser(
-		long companyId, long userId, int start, int end,
+	public java.util.List<com.rivetlogic.suggestionbox.model.Suggestion> getSuggestionsByUserIdAndGroupId(
+		long companyId, long userId, long groupId, int start, int end,
 		java.lang.String orderByType, java.lang.String orderByColumn) {
 		Object returnObj = null;
 
@@ -962,6 +963,8 @@ public class SuggestionLocalServiceClp implements SuggestionLocalService {
 						companyId,
 						
 					userId,
+						
+					groupId,
 						
 					start,
 						
@@ -988,9 +991,9 @@ public class SuggestionLocalServiceClp implements SuggestionLocalService {
 	}
 
 	@Override
-	public java.util.List<com.rivetlogic.suggestionbox.model.Suggestion> getSuggestionsByCompanyId(
-		long companyId, int start, int end, java.lang.String orderByType,
-		java.lang.String orderByColumn) {
+	public java.util.List<com.rivetlogic.suggestionbox.model.Suggestion> getSuggestionsByCompanyIdAndGroupId(
+		long companyId, long groupId, int start, int end,
+		java.lang.String orderByType, java.lang.String orderByColumn) {
 		Object returnObj = null;
 
 		try {
@@ -998,6 +1001,8 @@ public class SuggestionLocalServiceClp implements SuggestionLocalService {
 					_methodParameterTypes26,
 					new Object[] {
 						companyId,
+						
+					groupId,
 						
 					start,
 						

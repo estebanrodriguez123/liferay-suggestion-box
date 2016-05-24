@@ -61,13 +61,14 @@
 			<liferay-ui:search-container iteratorURL="<%=portletURL%>" emptyResultsMessage="no-suggestions" orderByCol="<%=orderByCol%>" orderByType="<%=orderByType%>" >
 				<liferay-ui:search-container-results
 					results="<%=SuggestionLocalServiceUtil
-									.getSuggestionsByUser(
-											themeDisplay.getCompanyId(),
-											themeDisplay.getUserId(),
-											searchContainer.getStart(), 
-											searchContainer.getEnd(),
-											orderByType,
-											orderByCol)%>"
+									.getSuggestionsByUserIdAndGroupId(
+										themeDisplay.getCompanyId(),
+										themeDisplay.getUserId(),
+										themeDisplay.getScopeGroupId(),
+										searchContainer.getStart(), 
+										searchContainer.getEnd(),
+										orderByType,
+										orderByCol)%>"
 					total="<%=SuggestionLocalServiceUtil
 									.getSuggestionsCount()%>" />
 	
@@ -122,8 +123,9 @@
 			<liferay-ui:search-container iteratorURL="<%=portletURL%>" emptyResultsMessage="no-suggestions" orderByCol="<%=orderByCol%>" orderByType="<%=orderByType%>" >
 				<liferay-ui:search-container-results
 					results="<%=SuggestionLocalServiceUtil
-							.getSuggestionsByCompanyId(
+							.getSuggestionsByCompanyIdAndGroupId(
 									themeDisplay.getCompanyId(),
+									themeDisplay.getScopeGroupId(),
 									searchContainer.getStart(),
 									searchContainer.getEnd(),
 									orderByType,
