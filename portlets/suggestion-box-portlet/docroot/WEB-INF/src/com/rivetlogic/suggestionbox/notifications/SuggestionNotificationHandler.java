@@ -28,7 +28,6 @@ import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.UserNotificationEvent;
 import com.liferay.portal.service.ServiceContext;
 import com.liferay.portal.service.UserNotificationEventLocalServiceUtil;
-import com.liferay.portal.theme.ThemeDisplay;
 import com.liferay.portal.util.PortalUtil;
 import com.liferay.portlet.PortletURLFactoryUtil;
 import com.rivetlogic.suggestionbox.model.Suggestion;
@@ -85,9 +84,9 @@ public class SuggestionNotificationHandler extends BaseUserNotificationHandler {
 
 		String notificationType = jsonObject.getString("notificationType");
 
-		ThemeDisplay themeDisplay = serviceContext.getThemeDisplay();
+		long scopeGroupId = jsonObject.getLong("scopeGroupId");
 
-		long portletPlid = PortalUtil.getPlidFromPortletId(themeDisplay.getScopeGroupId(), PORTLET_ID);
+		long portletPlid = PortalUtil.getPlidFromPortletId(scopeGroupId, PORTLET_ID);
 
 		PortletURL portletURL = null;
 

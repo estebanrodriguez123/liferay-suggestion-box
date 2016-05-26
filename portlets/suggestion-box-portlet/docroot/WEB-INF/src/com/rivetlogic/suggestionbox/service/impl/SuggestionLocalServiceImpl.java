@@ -103,6 +103,7 @@ public class SuggestionLocalServiceImpl extends SuggestionLocalServiceBaseImpl {
 		notificationEventJSONObject.put("suggestionId", suggestion.getSuggestionId());
 		notificationEventJSONObject.put("userId", suggestion.getUserId());
 		notificationEventJSONObject.put("notificationType", "CREATED");
+		notificationEventJSONObject.put("scopeGroupId", serviceContext.getScopeGroupId());
 
 		try {
 
@@ -160,6 +161,7 @@ public class SuggestionLocalServiceImpl extends SuggestionLocalServiceBaseImpl {
 		notificationEventJSONObject.put("suggestionId", suggestion.getSuggestionId());
 		notificationEventJSONObject.put("userId", suggestion.getReceivedUserId());
 		notificationEventJSONObject.put("notificationType", "RECEIVED");
+		notificationEventJSONObject.put("scopeGroupId", serviceContext.getScopeGroupId());
 		
 		UserNotificationEventLocalServiceUtil.addUserNotificationEvent(suggestion.getUserId(), SuggestionNotificationHandler.PORTLET_ID,
 				new Date().getTime(), suggestion.getReceivedUserId(), notificationEventJSONObject.toString(), false, serviceContext);
@@ -186,6 +188,7 @@ public class SuggestionLocalServiceImpl extends SuggestionLocalServiceBaseImpl {
 		notificationEventJSONObject.put("suggestionId", suggestion.getSuggestionId());
 		notificationEventJSONObject.put("userId", suggestion.getReceivedUserId());
 		notificationEventJSONObject.put("notificationType", "UPDATED");
+		notificationEventJSONObject.put("scopeGroupId", serviceContext.getScopeGroupId());
 		
 		UserNotificationEventLocalServiceUtil.addUserNotificationEvent(suggestion.getUserId(), SuggestionNotificationHandler.PORTLET_ID,
 				new Date().getTime(), suggestion.getReceivedUserId(), notificationEventJSONObject.toString(), false, serviceContext);
